@@ -778,9 +778,14 @@ export default class HotelDatepicker {
                 return false;
             }
 
+
             // Check the disabled dates
             if (this.disabledDates.length > 0) {
                 const limit = this.getClosestDates(new Date(parseInt(this.start, 10)));
+
+                if(this.isDisabledDate(time)) {
+                    return false;
+                }
 
                 if (limit[0] && this.compareDay(time, limit[0]) <= 0) {
                     return false;
@@ -816,6 +821,15 @@ export default class HotelDatepicker {
         }
 
         return true;
+    }
+
+    /**
+     * check if provided time is a disabledDate
+     * @param time - timestamp
+     * @returns {boolean}
+     */
+    isDisabledDate(time) {
+        return !!this.disabledDates.find(disabledDate => (new Date(time).setHours(0,0,0,0) === new Date(disabledDate).setHours(0,0,0,0)));
     }
 
     checkSelection() {
@@ -1263,9 +1277,9 @@ export default class HotelDatepicker {
             if (this.enableCheckout) {
                 dates = [false, this.addDays(this.disabledDatesTime[0], 1)];
             // Otherwise use the first date of the array
-            } else {
+            }/* else {
                 dates = [false, this.disabledDatesTime[0]];
-            }
+            }*/
 
         // If the day is after the last disabled date return early
         } else if (x > this.disabledDatesTime[this.disabledDatesTime.length - 1]) {
