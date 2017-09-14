@@ -1277,9 +1277,7 @@ export default class HotelDatepicker {
             if (this.enableCheckout) {
                 dates = [false, this.addDays(this.disabledDatesTime[0], 1)];
             // Otherwise use the first date of the array
-            }/* else {
-                dates = [false, this.disabledDatesTime[0]];
-            }*/
+            }
 
         // If the day is after the last disabled date return early
         } else if (x > this.disabledDatesTime[this.disabledDatesTime.length - 1]) {
@@ -1318,8 +1316,6 @@ export default class HotelDatepicker {
             } else if (this.enableCheckout) {
                 dates[1] = this.addDays(this.disabledDatesTime[bestNextDate], 1);
             // Otherwise use the date of the array
-            } else {
-                dates[1] = this.disabledDatesTime[bestNextDate];
             }
         }
 
