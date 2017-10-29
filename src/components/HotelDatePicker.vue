@@ -214,6 +214,7 @@ $desktopLayoutWidth: 1020px;
   transition:  max-height .5s ease-in-out, box-shadow .2s ease-in-out;
 
   &--closed {
+    pointer-events: none;
     box-shadow: 0 15px 30px 10px rgba(0, 0, 0, 0);
     max-height: 0px;
     transition:  max-height .5s ease-in-out, box-shadow .2s ease .4s;
